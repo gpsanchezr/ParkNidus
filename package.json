@@ -1,7 +1,8 @@
 {
-"name":"parknidus"
+  "name": "parknidus",
   "version": "0.1.0",
   "private": true,
+  "description": "Sistema de Control de Parqueadero - Giseella Sanchez",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -65,6 +66,8 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"

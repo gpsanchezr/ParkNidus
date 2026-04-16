@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ParkControl - Sistema de Control de Parqueadero',
-  description: 'Sistema web de control de parqueadero con gestion de entradas, salidas, tarifas y reportes',
+  title: 'ParkNidus - Giseella Sanchez',
+  description: 'Sistema web de control de parqueadero con gestión de entradas, salidas, tarifas y reportes - Desarrollado por Giseella Sanchez',
 }
 
 export default function RootLayout({
