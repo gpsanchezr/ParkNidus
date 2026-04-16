@@ -1,2 +1,7 @@
 @tailwind base;
-@tailwind
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background
