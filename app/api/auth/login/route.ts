@@ -7,6 +7,8 @@ import bcrypt from 'bcryptjs'
 import type { Database } from "@/lib/supabase/database.types"
 import { getUsuarioByEmail } from "@/lib/data-store"
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: Request) {
   try {
     console.log('--- LOGIN API LLAMADA ---')

@@ -117,10 +117,10 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
               <button
                 key={item.view}
                 onClick={() => onViewChange(item.view)}
-                className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+                className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors text-slate-200 hover:text-white ${
                   currentView === item.view
-                    ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                    : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    ? "bg-sidebar-primary text-white"
+                    : "hover:bg-sidebar-accent hover:text-white"
                 }`}
               >
                 {item.icon}
@@ -131,8 +131,8 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
         </nav>
 
         <div className="border-t border-sidebar-border p-4">
-          <div className="mb-3 flex flex-col gap-0.5">
-<p className="text-sm font-bold text-glow-cyan font-mono">{user?.nombre} - {user?.rol_nombre}</p>
+<div className="mb-3 flex flex-col gap-0.5">
+<p className="text-sm font-bold text-cyan-400 font-mono">{user?.nombre} - {user?.rol_nombre}</p>
           </div>
           <Button
             variant="outline"
@@ -164,7 +164,6 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
         </main>
       </div>
 
-      <WhatsAppButton />
     </div>
   )
 }

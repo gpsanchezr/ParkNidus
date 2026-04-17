@@ -11,8 +11,8 @@ export default async function DashboardPage() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="card-neon p-8 text-center max-w-md">
-          <h1 className="text-2xl font-bold text-glow-red mb-4">Error: No se encontró sesión</h1>
-          <p className="text-glow-violet mb-6">Cookie de sesión no encontrada o expirada.</p>
+          <h1 className="text-2xl font-bold text-red-400 mb-4">Error: No se encontró sesión</h1>
+          <p className="text-slate-300 mb-6">Cookie de sesión no encontrada o expirada.</p>
           <a href="/" className="btn-primary">
             Volver al Login
           </a>
