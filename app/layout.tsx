@@ -10,9 +10,12 @@ const _geist = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ParkNidus - Giseella Sanchez',
-  description: 'Sistema web de control de parqueadero con gestión de entradas, salidas, tarifas y reportes - Desarrollado por Giseella Sanchez',
-}
+  title: "ParkNidus",
+  description: "Sistema de Control de Parqueadero SENA",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -20,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+<html lang="es" suppressHydrationWarning={true}>
+<body className="font-sans antialiased" suppressHydrationWarning={true}>
         {children}
         <WhatsAppButton />
         <script suppressHydrationWarning dangerouslySetInnerHTML={{

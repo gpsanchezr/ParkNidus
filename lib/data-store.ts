@@ -67,14 +67,17 @@ export async function createUsuario(data: {
     .from('usuarios')
     .insert({
       nombre: data.nombre,
-      email: data.email,
+      email: data.email.toLowerCase().trim(),
       password_hash: hashPassword(data.password),
       rol_id: data.rol_id,
       activo: data.activo ?? true
     })
     .select()
     .single()
-  if (error) throw error
+  if (error) {
+    console.error("Supabase insert usuarios error:", error)
+    throw error
+  }
   return user
 }
 

@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
-  Car,
+  CarFront,
   LogOut,
   LayoutDashboard,
   LogIn as LogInIcon,
@@ -96,7 +96,7 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
       >
         <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary">
-            <Car className="h-5 w-5 text-sidebar-primary-foreground" />
+            <CarFront className="h-5 w-5 text-sidebar-primary-foreground" />
           </div>
           <div>
             <h1 className="text-base font-bold text-sidebar-foreground">ParkControl</h1>

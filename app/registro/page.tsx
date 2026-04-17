@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { UserPlus, Mail, Lock, User, CheckCircle } from "lucide-react"
+import { CarFront, UserPlus, Mail, Lock, User, CheckCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -60,8 +61,8 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900/30 to-slate-900 p-4">
       <Card className="w-full max-w-md card-neon glow-cyan mx-auto fade-in-up">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-lime-500 to-emerald-500 shadow-2xl glow-lime pulse-neon">
-            <UserPlus className="h-10 w-10 text-glow-cyan" />
+<div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-lime-500 to-emerald-500 shadow-2xl glow-lime pulse-neon">
+            <CarFront className="h-10 w-10 text-glow-cyan" />
           </div>
           <CardTitle className="text-3xl font-black bg-gradient-to-r from-lime-400 to-emerald-500 bg-clip-text text-transparent text-glow-lime">
             Nuevo Operario
