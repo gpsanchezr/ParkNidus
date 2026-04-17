@@ -52,13 +52,17 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET/POST/PUT | `/api/users` | CRUD users admin |
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
-## 🏗️ ERD ASCII
+## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
+![MER ParkNidus](docs/MER-diagrama.png)
+
+**ASCII Backup:**
 ```
-roles(1 Admin,2 Operario) 1---* usuarios(Admin|Operario)
-tipos_vehiculo(Sedan|Camioneta|Moto) *---* tarifas (diferenciadas)
-espacios(A01-30 autos, M01-15 motos) *---* registros (entry/exit)
-registros ---* tickets (cobro auto)
+ROLES(id,nombre) ←1:* USUARIOS(email,password_hash,rol_id)
+TIPOS_VEHICULO ←* TARIFAS(tipo_cobro,valor)
+ESPACIOS(codigo,disponible) *:* REGISTROS(placa,estado,minutos_totales,valor_calculado)
+REGISTROS →1:* TICKETS(codigo_ticket)
 ```
+**Fuente:** scripts/supabase-schema.sql ejecutado en Supabase → Export visual.
 
 ## 🎨 Neon Pulse Customization
 globals.css: .card-neon, .glow-cyan, pulse-neon, text-glow-*, badge-lime/red.
