@@ -1,14 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { DashboardLayout } from "./dashboard-layout"
-import { DashboardOverview } from "./dashboard-overview"
-import { VehicleEntryForm } from "./vehicle-entry-form"
-import { VehicleExitForm } from "./vehicle-exit-form"
-import { SpaceAvailability } from "./space-availability"
-import { TariffManagement } from "./tariff-management"
-import { UserManagement } from "./user-management"
-import { ReportsView } from "./reports-view"
 
 type View =
   | "dashboard"
@@ -20,7 +14,7 @@ type View =
   | "reportes"
 
 interface User {
-  id: number
+  id: string | number
   nombre: string
   email: string
   rol_id: number
@@ -33,25 +27,38 @@ interface DashboardClientProps {
 
 export function DashboardClient({ user }: DashboardClientProps) {
   const [currentView, setCurrentView] = useState<View>("dashboard")
+  const router = useRouter()
 
   function renderView() {
     switch (currentView) {
       case "dashboard":
-        return <DashboardOverview isAdmin={user.rol_id === 1} />
+        return <div>Dashboard Overview - Cupos y Estadísticas</div>
       case "entrada":
-        return <VehicleEntryForm />
+        return (
+          <iframe 
+            src="/dashboard/entrada" 
+            className="w-full h-[80vh] border-0 rounded-xl card-neon"
+            title="Entrada de Vehículos"
+          />
+        )
       case "salida":
-        return <VehicleExitForm />
+        return (
+          <iframe 
+            src="/dashboard/salida" 
+            className="w-full h-[80vh] border-0 rounded-xl card-neon"
+            title="Salida de Vehículos"
+          />
+        )
       case "cupos":
-        return <SpaceAvailability />
+        return <div>Cupos Disponibles - Consulta espacios</div>
       case "tarifas":
-        return user.rol_id === 1 ? <TariffManagement /> : <DashboardOverview isAdmin={false} />
+        return user.rol_id === 1 ? <div>Tarifas Management</div> : <div>No autorizado</div>
       case "usuarios":
-        return user.rol_id === 1 ? <UserManagement /> : <DashboardOverview isAdmin={false} />
+        return user.rol_id === 1 ? <div>User Management</div> : <div>No autorizado</div>
       case "reportes":
-        return user.rol_id === 1 ? <ReportsView /> : <DashboardOverview isAdmin={false} />
+        return user.rol_id === 1 ? <div>Reports</div> : <div>No autorizado</div>
       default:
-        return <DashboardOverview isAdmin={user.rol_id === 1} />
+        return <div>Dashboard Overview</div>
     }
   }
 

@@ -3,16 +3,14 @@
 import React from "react"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { CarFront, AlertCircle } from "lucide-react"
+import { Car, CarFront, AlertCircle } from "lucide-react"
 
 export function LoginForm() {
-  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [rolId, setRolId] = useState("2")
@@ -34,15 +32,16 @@ export function LoginForm() {
       const data = await res.json()
 
       if (!res.ok) {
-        setError(data.error || "Error al iniciar sesion")
+        setError(data.error || "Error al iniciar sesión")
         return
       }
 
-      router.push("/dashboard")
-      router.refresh()
-    } catch {
-      setError("Error de conexion. Intente nuevamente.")
-    } finally {
+      console.log("REDIRECCIÓN INICIADA A /DASHBOARD")
+      setLoading(false)
+      window.location.assign('/dashboard')
+    } catch (err) {
+      console.error('Login error:', err)
+      setError("Error de conexión. Intente nuevamente.")
       setLoading(false)
     }
   }
@@ -107,7 +106,7 @@ export function LoginForm() {
                 </SelectContent>
               </Select>
             </div>
-            <Button type="submit" className="h-16 text-xl font-black bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-400 text-glow-cyan pulse-neon shadow-2xl glow-cyan transform hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 border-0 drop-shadow-2xl" disabled={loading}>
+            <Button type="submit" className="h-16 text-xl font-black bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-500 text-glow-cyan pulse-neon shadow-2xl glow-cyan transform hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 border-0 drop-shadow-2xl" disabled={loading}>
               {loading ? "🔐 ACCEDIENDO AL SISTEMA..." : "INICIAR SESIÓN"}
             </Button>
 
@@ -121,4 +120,3 @@ export function LoginForm() {
     </div>
   )
 }
-

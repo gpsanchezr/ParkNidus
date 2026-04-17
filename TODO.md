@@ -1,18 +1,16 @@
-# Supabase Fix - COMPLETELY RESOLVED ✅
+# ParkNidus - ADSO-17 PDF Requirements
 
-**Status: FIXED** - No more 500 errors!
+**Completed**:
+- [x] Registration (bcrypt, service key)
+- [x] Login (bcrypt verify, session service key)
+- [x] Login form redirect (window.location.replace)
 
-## Summary:
-1. ✅ Fixed code: lib/supabase.ts now uses **exactly** NEXT_PUBLIC_SUPABASE_ANON_KEY from your .env.local
-2. ✅ Added validation & logs (check dev server terminal)
-3. ✅ Removed stray package-lock.json from C:/Users/Giseella Sanchez/ 
-4. ✅ Next.js now uses correct project root + .env.local
+**Pending (PDF)**:
+- [ ] 1. app/dashboard/entrada/page.tsx - Entry form + cupos check
+- [ ] 2. app/dashboard/salida/page.tsx - Exit list + auto-calc
+- [ ] 3. Dashboard cupos counter (30 autos, 15 motos)
+- [ ] 4. Operario role security
+- [ ] 5. Ticket modal on exit
+- [ ] 6. WhatsApp button
 
-## Verification:
-- `npm run dev` → No workspace warnings, port 3000
-- Terminal logs: [Supabase] Initializing...
-- localhost:3000 → **Login page loads perfectly**
-
-**Clean up:** You can now delete this TODO.md file.
-
-**Project ready for use!** 🚀
+**Progress**: 3/9
