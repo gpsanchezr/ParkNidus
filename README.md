@@ -5,7 +5,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://typescriptlang.org)
 [![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=flat&logo=vercel)](https://vercel.com)
 
-**Sistema Web de Control de Parqueadero Neon Pulse** – SENA ADSO-17 Giseella Sanchez.
+**Sistema Web de Control de Parqueadero Neon Pulse**.
 
 ## ✨ Características Neon Cyberpunk
 - **Capacidad Exacta**: 30 autos (A01-30) + 15 motos (M01-15) = 45 espacios
@@ -148,4 +148,4 @@ graph TD
 - Email tickets
 - PDF export
 
-**SENA ADSO-17 – Giseella Sanchez | Final 10/10** ⭐⭐⭐⭐⭐
+** Giseella Sanchez | Final 10/10** ⭐⭐⭐⭐⭐
