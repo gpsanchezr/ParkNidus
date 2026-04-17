@@ -32,7 +32,7 @@ export function DashboardClient({ user }: DashboardClientProps) {
   function renderView() {
     switch (currentView) {
       case "dashboard":
-        return <div>Dashboard Overview - Cupos y Estadísticas</div>
+        return <div className="text-2xl font-bold text-slate-900 p-8">Dashboard Overview - Cupos y Estadísticas</div>
       case "entrada":
         return (
           <iframe 
