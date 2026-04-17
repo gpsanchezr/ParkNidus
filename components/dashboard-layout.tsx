@@ -92,9 +92,7 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-sidebar text-sidebar-foreground transition-transform duration-200 lg:static lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 left-0 z-50 flex w-80 flex-col card-neon backdrop-blur-xl text-foreground transition-all duration-300 lg:static lg:translate-x-0 glow-cyan border-r-cyan-500/30 \${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary">
@@ -134,8 +132,7 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
 
         <div className="border-t border-sidebar-border p-4">
           <div className="mb-3 flex flex-col gap-0.5">
-            <p className="text-sm font-medium text-sidebar-foreground">{user?.nombre}</p>
-            <p className="text-xs text-sidebar-foreground/60">{user?.rol_nombre}</p>
+<p className="text-sm font-bold text-glow-cyan font-mono">{user?.nombre} - {user?.rol_nombre}</p>
           </div>
           <Button
             variant="outline"

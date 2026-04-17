@@ -6,7 +6,7 @@ export async function GET() {
   const user = await getServerUser()
   if (!user) return NextResponse.json({ error: "No autenticado" }, { status: 401 })
 
-  const tarifas = getTarifas()
+  const tarifas = await getTarifas()
   return NextResponse.json({ tarifas })
 }
 
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Datos incompletos" }, { status: 400 })
   }
 
-  const tarifa = createTarifa({
+  const tarifa = await createTarifa({
     tipo_vehiculo_id,
     nombre,
     tipo_cobro,
@@ -51,7 +51,7 @@ export async function PUT(request: Request) {
 
   if (data.valor !== undefined) data.valor = Number(data.valor)
 
-  const tarifa = updateTarifa(id, data)
+  const tarifa = await updateTarifa(id, data)
   if (!tarifa) {
     return NextResponse.json({ error: "Tarifa no encontrada" }, { status: 404 })
   }

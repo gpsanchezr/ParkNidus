@@ -1,82 +1,73 @@
-# ParkNidus - Sistema de Control de Parqueadero
+# ParkNidus 🚗 Cyberpunk Parking System
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue?style=flat&logo=tailwind)](https://tailwindcss.com)
+[![Supabase](https://img.shields.io/badge/Supabase-Postgres-purple?style=flat&logo=supabase)](https://supabase.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://typescriptlang.org)
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=flat&logo=vercel)](https://vercel.com)
 
-**Desarrollado por Giseella Sanchez Rico**
+**Sistema Web de Control de Parqueadero Neon Pulse** – SENA ADSO-17 Giseella Sanchez.
 
-[![Neon Pulse](https://img.shields.io/badge/Theme-Neon%20Pulse-brightgreen)](https://github.com/gpsanchezr/ParkNidus)
-[![Supabase](https://img.shields.io/badge/DB-Supabase-blueviolet)](https://supabase.com)
+## ✨ Características Neon Cyberpunk
+- **Capacidad Exacta**: 30 autos (A01-30) + 15 motos (M01-15) = 45 espacios
+- **Roles**: Admin (tarifas/users/reports) | Operario (entry/exit/cupos)
+- **Tarifas Diferenciadas**: Sedan $5k/h | Camioneta $7k/h | Moto $3k/h
+- **Cobro Auto**: Tiempo real minutos → valor
+- **APIs Full**: /vehicles/exit preview→confirm, PUT tariffs/users, reports charts
+- **Neon Pulse UI**: Glow cian/violeta/lima, Exo2 Mono fonts, pulse animations, blobs bg
+- **WhatsApp Float**: Soporte 24/7
 
-Sistema web **Cyberpunk** para control de parqueadero que cumple 100% con los requerimientos del proyecto:
-
-- 30 espacios autos (15 sedan + 15 camioneta)
-- 15 espacios motos  
-- Cálculo automático tarifas (hora/minuto)
-- Botón WhatsApp integrado
-- Dashboard impactante Neon Pulse
-
-## 🎮 Demo
-
-```
+## 🚀 Quick Start
+```bash
+git clone <repo>
+cd ParkNidus
 npm install
 npm run dev
 ```
+**Demo Login:**
+| User | Pass | Rol |
+|------|------|-----|
+| admin@parking.com | admin123 | Admin |
+| operario@parking.com | oper123 | Operario |
 
-**Credenciales**:
-- Admin: `admin@parking.com` / `admin123`
-- Operario: `operario@parking.com` / `oper123`
+localhost:3000
 
-## 🏗️ Arquitectura
-
-```mermaid
-graph TB
-  User[Usuario Web]
-  Next[Next.js 16 App Router]
-  API[API Routes]
-  Supabase[(Supabase PG)]
-  WhatsApp[(WhatsApp API)]
-  
-  User -->|HTTPS| Next
-  Next --> API
-  API --> Supabase
-  Next --> WhatsApp
-  
-  Supabase -->|Tables| DB[(roles<br/>usuarios<br/>espacios<br/>registros<br/>tarifas<br/>tickets)]
+## 🗄️ Supabase Setup
+1. Create project supabase.com
+2. Run [DATABASE_SCHEMA.sql](DATABASE_SCHEMA.sql) in SQL Editor
+3. `.env.local`:
 ```
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+4. `npx supabase gen types typescript --local > lib/supabase/database.types.ts`
 
 ## 📋 Endpoints API
-
-| Método | Endpoint | Descripción |
+| Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/spaces` | Espacios disponibles + cupos |
-| POST | `/api/vehicles` | Entrada vehículo |
-| POST | `/api/vehicles/exit` | Salida vehículo + cobro |
-| GET | `/api/reports` | Reportes ingresos |
-| GET | `/api/tariffs` | Tarifas activas |
-| GET | `/api/users` | Usuarios |
+| POST | `/api/auth/login` | Login email/pass → session cookie |
+| POST | `/api/vehicles` | Entry placa/tipo → occupy space |
+| GET | `/api/vehicles/exit?placa=ABC123` | Preview cobro |
+| POST | `/api/vehicles/exit` | Confirm exit + ticket |
+| GET/PUT | `/api/tariffs` | CRUD tarifas admin |
+| GET/POST/PUT | `/api/users` | CRUD users admin |
+| GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
-## 🚀 Supabase Setup
-
-1. Ejecuta `scripts/supabase-schema.sql`
-2. `.env.local` ya configurado
-3. `npm i @supabase/supabase-js`
-
-## 🎨 Neon Pulse Theme
-
-```css
-Primary: hsl(189 99% 55%) - Cyan Eléctrico
-Secondary: hsl(271 74% 50%) - Violeta Profundo  
-Accent: hsl(162 85% 45%) - Lima Neón
+## 🏗️ ERD ASCII
+```
+roles(1 Admin,2 Operario) 1---* usuarios(Admin|Operario)
+tipos_vehiculo(Sedan|Camioneta|Moto) *---* tarifas (diferenciadas)
+espacios(A01-30 autos, M01-15 motos) *---* registros (entry/exit)
+registros ---* tickets (cobro auto)
 ```
 
-Modo oscuro por defecto, alto contraste cyberpunk.
+## 🎨 Neon Pulse Customization
+globals.css: .card-neon, .glow-cyan, pulse-neon, text-glow-*, badge-lime/red.
 
-## 📱 Features
+## 📦 Dependencies
+```
+npm i next react shadcn/ui tailwind lucide-react @supabase/supabase-js recharts
+```
 
-✅ 45 espacios total (30 auto + 15 moto)  
-✅ Cálculo tarifas reales  
-✅ Autenticación rol-based  
-✅ Reportes diarios  
-✅ Tickets WhatsApp  
-✅ Responsive shadcn/ui  
-✅ TypeScript completo  
+**Deploy Vercel:** Automatic git push, next.config ignoreBuildErrors ready.
 
-**Desarrollado por Giseella Sanchez Rico** 👩‍💻
+**SENA ADSO-17 Fabián Florián – Proyecto Final Listo!** ⭐

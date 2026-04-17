@@ -4,23 +4,14 @@ import type { Database } from './supabase/database.types' // Auto-generated afte
 // Types from Supabase
 type DB = Database['public']['Tables']
 
-// Simple hash (keep for demo passwords)
-function simpleHash(str: string): string {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i)
-    hash = ((hash << 5) - hash) + char
-    hash = hash & hash
-  }
-  return `hashed_${Math.abs(hash).toString(36)}_${str.length}`
-}
+import bcrypt from 'bcryptjs';
 
 export function verifyPassword(plain: string, hashed: string): boolean {
-  return simpleHash(plain) === hashed
+  return bcrypt.compareSync(plain, hashed)
 }
 
 export function hashPassword(plain: string): string {
-  return simpleHash(plain)
+  return bcrypt.hashSync(plain, 12)
 }
 
 // ROLES

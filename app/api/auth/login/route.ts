@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email y contraseña son requeridos" }, { status: 400 })
   }
 
-  const usuario = getUsuarioByEmail(email)
+const usuario = await getUsuarioByEmail(email)
   if (!usuario) {
     return NextResponse.json({ error: "Credenciales incorrectas" }, { status: 401 })
   }
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Credenciales incorrectas" }, { status: 401 })
   }
 
-  const session = createSession(usuario.id)
+  const session = await createSession(usuario.id)
   const cookieStore = await cookies()
   cookieStore.set("session_id", session.id, {
     httpOnly: true,

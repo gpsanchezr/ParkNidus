@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Car, AlertCircle } from "lucide-react"
 
 export function LoginForm() {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [rolId, setRolId] = useState("2")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -26,7 +28,7 @@ export function LoginForm() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, rol_id: rolId }),
       })
 
       const data = await res.json()
@@ -46,56 +48,72 @@ export function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <Card className="w-full max-w-md">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900/50 to-slate-900 p-8 relative overflow-hidden fade-in-up z-10">
+      <Card className="w-full max-w-lg card-neon glow-cyan mx-auto fade-in-up">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary">
-            <Car className="h-8 w-8 text-primary-foreground" />
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 shadow-2xl glow-lime pulse-neon">
+            <Car className="h-10 w-10 text-glow-cyan drop-shadow-lg" />
           </div>
-          <CardTitle className="text-2xl font-bold text-foreground">ParkControl</CardTitle>
-          <CardDescription className="text-muted-foreground">
-            Sistema de Control de Parqueadero
+          <CardTitle className="text-4xl font-black tracking-tight bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg text-glow-cyan mb-1">ParkNidus</CardTitle>
+          <CardDescription className="text-glow-lime text-lg backdrop-blur-sm">
+            Sistema de Control de Parqueadero Cyberpunk
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             {error && (
-              <div className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
-                <AlertCircle className="h-4 w-4 shrink-0" />
-                {error}
+              <div className="flex items-center gap-3 rounded-xl card-neon border-red-500/40 bg-gradient-to-r from-red-500/20 to-rose-500/20 p-4 text-sm backdrop-blur-md glow-red shadow-xl animate-pulse">
+                <AlertCircle className="h-5 w-5 shrink-0 text-red-400" />
+                <span className="text-red-300 font-medium">{error}</span>
               </div>
             )}
             <div className="flex flex-col gap-2">
-              <Label htmlFor="email" className="text-foreground">Correo electronico</Label>
+              <Label htmlFor="email" className="text-glow-cyan font-semibold tracking-wide uppercase text-sm">📧 Correo Electrónico</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="correo@ejemplo.com"
+                placeholder="tu@correo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-12 text-base"
+                className="h-14 text-lg card-neon border-cyan-500/50 bg-black/30 backdrop-blur-md focus:ring-2 focus:ring-glow-cyan"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="password" className="text-foreground">Contrasena</Label>
+              <Label htmlFor="password" className="text-glow-violet font-semibold tracking-wide uppercase text-sm">🔒 Contraseña</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Ingrese su contrasena"
+                placeholder="tu contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="h-12 text-base"
+                className="h-14 text-lg card-neon border-purple-500/50 bg-black/30 backdrop-blur-md focus:ring-2 focus:ring-glow-violet"
               />
             </div>
-            <Button type="submit" className="h-12 text-base font-semibold" disabled={loading}>
-              {loading ? "Ingresando..." : "Iniciar Sesion"}
+            <div className="flex flex-col gap-2">
+              <Label className="text-glow-lime font-semibold tracking-wide uppercase text-sm">🎛️ Tipo de Acceso</Label>
+              <Select value={rolId} onValueChange={setRolId}>
+                <SelectTrigger className="h-14 card-neon border-lime-500/50 bg-black/30 backdrop-blur-md focus:ring-2 focus:ring-glow-lime">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="card-neon backdrop-blur-xl border-lime-500/50 w-[300px]">
+                  <SelectItem value="1" className="text-glow-cyan">
+                    🔐 Administrador (Tarifas/Usuarios/Reportes)
+                  </SelectItem>
+                  <SelectItem value="2" className="text-glow-lime">
+                    ⚙️ Operario (Entradas/Salidas/Cupos)
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button type="submit" className="h-16 text-xl font-black bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:from-cyan-400 hover:via-blue-400 hover:to-purple-400 text-glow-cyan pulse-neon shadow-2xl glow-cyan transform hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 border-0 drop-shadow-2xl" disabled={loading}>
+              {loading ? "🔐 ACCEDIENDO AL SISTEMA..." : "INICIAR SESIÓN"}
             </Button>
-            <div className="rounded-lg bg-muted p-3 text-xs text-muted-foreground">
-              <p className="font-semibold mb-1">Credenciales de prueba:</p>
-              <p>Admin: admin@parking.com / admin123</p>
-              <p>Operario: operario@parking.com / oper123</p>
+
+            <div className="flex items-center justify-between text-xs text-glow-violet mt-6 pt-4 border-t border-cyan-500/30 px-1">
+              <a href="#" className="hover:text-glow-cyan transition-all duration-300 font-mono uppercase tracking-wider">¿Olvidaste tu clave?</a>
+              <a href="/registro" className="hover:text-glow-cyan transition-all duration-300 font-bold uppercase tracking-wider">Regístrate</a>
             </div>
           </form>
         </CardContent>
@@ -103,3 +121,4 @@ export function LoginForm() {
     </div>
   )
 }
+

@@ -12,8 +12,8 @@ export async function GET(request: Request) {
   const fechaInicio = url.searchParams.get("fechaInicio") || undefined
   const fechaFin = url.searchParams.get("fechaFin") || undefined
 
-  const reporte = getReporteIngresos(fechaInicio, fechaFin)
-  const tipos = getTiposVehiculo()
+  const reporte = await getReporteIngresos(fechaInicio, fechaFin)
+  const tipos = await getTiposVehiculo()
 
   return NextResponse.json({ reporte, tipos })
 }

@@ -6,10 +6,10 @@ export async function getServerUser() {
   const sessionId = cookieStore.get("session_id")?.value
   if (!sessionId) return null
 
-  const session = getSession(sessionId)
+  const session = await getSession(sessionId)
   if (!session) return null
 
-  const usuario = getUsuarioById(session.usuario_id)
+  const usuario = await getUsuarioById(session.usuario_id)
   if (!usuario || !usuario.activo) return null
 
   return {
