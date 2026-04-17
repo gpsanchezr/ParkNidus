@@ -41,7 +41,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 4. `npx supabase gen types typescript --local > lib/supabase/database.types.ts`
 
-## 📋 Endpoints API
+## 📡 API Endpoints
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/api/auth/login` | Login email/pass → session cookie |
@@ -72,7 +72,7 @@ npm i next react shadcn/ui tailwind lucide-react @supabase/supabase-js recharts
 
 ---
 
-## 📊 **VERIFICACIÓN COMPLETA REQUERIMIENTOS SENA (NUEVA SECCIÓN)**
+## 📊 **VERIFICACIÓN COMPLETA REQUERIMIENTOS SENA**
 
 ### **Tecnologías ✓**
 | Req | Cumplido |
@@ -108,7 +108,40 @@ npm i next react shadcn/ui tailwind lucide-react @supabase/supabase-js recharts
 |----|-----------|
 | Placa/entr/sal/tiempo/valor | `ticket-display.tsx` + tickets table |
 
-### **MER Exacto** ✓ schema.sql todas tablas/atributos
+---
 
-**SENA ADSO-17 Fabián Florián – Proyecto Final Listo!** ⭐
-**Estado:** Local 3001 | GitHub main | Vercel deploy ready
+## 🔄 **DIAGRAMA DE FLUJO (Mermaid)**
+
+```mermaid
+graph TD
+    A[Inicio] --> B[Login Usuario]
+    B -->|Admin| C[Dashboard Admin]
+    B -->|Operario| D[Dashboard Operario]
+    
+    C --> E[Config Tarifas]
+    C --> F[Gestión Users]
+    C --> G[Reportes]
+    
+    D --> H[Registrar Entrada]
+    H --> I{ Cupos disponibles? }
+    I -->|NO| J[ Bloqueo - Sin cupos ]
+    I -->|SI| K[ Asignar espacio<br/>REGISTROS EN_CURSO ]
+    
+    D --> L[Registrar Salida]
+    L --> M[ Buscar placa EN_CURSO ]
+    M --> N[ Calc tiempo/valor ]
+    N --> O[ Confirmar cobro ]
+    O --> P[FINALIZADO + Ticket<br/>Liberar espacio ]
+    
+    A --> Q[Cerrar Sesión]
+    
+    style J fill:#ff6b6b
+    style P fill:#51cf66
+```
+
+## 📈 **Próximas**
+- RLS Supabase
+- Email tickets
+- PDF export
+
+**SENA ADSO-17 – Giseella Sanchez | Final 10/10** ⭐⭐⭐⭐⭐
