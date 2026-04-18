@@ -53,7 +53,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
 ## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
-![MER ParkNidus](docs/MER-diagrama.png)
+![MER ParkNidus](docs/DIAGRAMA-MER.png)
 
 **ASCII Backup:**
 ```
@@ -150,13 +150,15 @@ graph TD
     D --> H[Registrar Entrada]
     H --> I{ Cupos disponibles? }
     I -->|NO| J[ Bloqueo - Sin cupos ]
-    I -->|SI| K[ Asignar espacio<br/>REGISTROS EN_CURSO ]
+    I -->|SI| K[ Asignar espacio
+REGISTROS EN_CURSO ]
     
     D --> L[Registrar Salida]
     L --> M[ Buscar placa EN_CURSO ]
     M --> N[ Calc tiempo/valor ]
     N --> O[ Confirmar cobro ]
-    O --> P[FINALIZADO + Ticket<br/>Liberar espacio ]
+    O --> P[FINALIZADO + Ticket
+Liberar espacio ]
     
     A --> Q[Cerrar Sesión]
     
