@@ -18,7 +18,7 @@ import {
   Menu,
   X,
 } from "lucide-react"
-import { WhatsAppButton } from "./whatsapp-button"
+
 
 interface User {
   id: number
@@ -92,7 +92,7 @@ export function DashboardLayout({ children, currentView, onViewChange, user }: D
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-80 flex-col card-neon backdrop-blur-xl text-foreground transition-all duration-300 lg:static lg:translate-x-0 glow-cyan border-r-cyan-500/30 \${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+className={`fixed inset-y-0 left-0 z-50 w-80 flex flex-col bg-card border-r shadow-soft text-foreground transition-all duration-300 lg:static lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sidebar-primary">

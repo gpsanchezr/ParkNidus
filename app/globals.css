@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;800&family=Share+Tech+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,31 +6,31 @@
 
 @layer base {
   :root {
-    --background: 240 10% 98%;
+    --background: 0 0% 100%;
     --foreground: 240 5.3% 26.1%;
     --card: 0 0% 100%;
     --card-foreground: 240 5.3% 26.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 5.3% 26.1%;
-    --primary: 180 100% 50%; /* Cian Electrico */
+    --primary: 220 80% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 275 74% 37%; /* Violeta Profundo */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 240 4.8% 95.9%;
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 240 5.3% 26.1%;
+    --muted: 210 10% 95%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 134 100% 50%; /* Lima Neon */
+    --accent: 30 80% 55%;
     --accent-foreground: 240 5.3% 26.1%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 180 100% 50%;
-    --chart-1: 180 100% 50%;
-    --chart-2: 275 74% 37%;
-    --chart-3: 134 100% 50%;
+    --border: 210 10% 90%;
+    --input: 210 10% 90%;
+    --ring: 220 80% 55%;
+    --chart-1: 220 80% 55%;
+    --chart-2: 30 80% 55%;
+    --chart-3: 150 60% 55%;
     --chart-4: 0 84% 60%;
-    --chart-5: 340 75% 55%;
-    --radius: 0.5rem;
+    --chart-5: 330 60% 55%;
+    --radius: 0.6rem;
   }
 
   .dark {
@@ -40,136 +40,41 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 180 100% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 275 74% 47%;
+    --primary: 220 80% 65%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 134 100% 60%;
+    --accent: 30 80% 65%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 180 100% 60%;
+    --ring: 220 80% 65%;
   }
 }
 
-@layer components {
-  .card-neon {
-    background: rgba(15, 25, 45, 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsla(180, 100%, 50%, 0.3);
-    box-shadow: 
-      0 0 20px hsla(180, 100%, 50%, 0.15),
-      inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .card-neon:hover {
-    border-color: hsla(180, 100%, 50%, 0.6);
-    box-shadow: 
-      0 8px 32px hsla(180, 100%, 50%, 0.25),
-      0 0 40px hsla(180, 100%, 50%, 0.1);
-    transform: translateY(-2px);
-  }
-
-  .glow-cyan {
-    box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.4);
-  }
-
-  .glow-lime {
-    box-shadow: 0 0 20px hsla(134, 100%, 50%, 0.4);
-  }
-
-  .glow-violet {
-    box-shadow: 0 0 20px hsla(275, 74%, 37%, 0.4);
-  }
-
-  .text-glow-cyan {
-    text-shadow: 0 0 10px hsla(180, 100%, 50%, 0.6);
-  }
-
-  .text-glow-lime {
-    text-shadow: 0 0 10px hsla(134, 100%, 50%, 0.6);
-  }
-
-  .badge-lime { @apply bg-gradient-to-r from-lime-400 to-emerald-500 text-black border-lime-400/50 shadow-lg; }
-  .badge-red { @apply bg-gradient-to-r from-red-500 to-rose-500 text-white border-red-400/50 shadow-lg; }
-  .badge-cyan { @apply bg-gradient-to-r from-cyan-400 to-blue-400 text-black border-cyan-400/50 shadow-lg; }
-  .badge-amber { @apply bg-gradient-to-r from-amber-400 to-orange-400 text-black border-amber-400/50 shadow-lg; }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .fade-in-up {
-    animation: fade-in-up 0.6s ease-out forwards;
-  }
-
-  @keyframes pulse-neon {
-    0%, 100% { box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.3); }
-    50% { box-shadow: 0 0 40px hsla(180, 100%, 50%, 0.6); }
-  }
-
-  .pulse-neon {
-    animation: pulse-neon 2s infinite;
-  }
-
-  @keyframes slide-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  .slide-in {
-    animation: slide-in 0.5s ease-out;
-  }
-
-  /* Cyberpunk BG Grid + Blobs */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    background-image: 
-      radial-gradient(circle at 20% 80%, hsla(180, 100%, 50%, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsla(275, 74%, 37%, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, hsla(134, 100%, 50%, 0.06) 0%, transparent 50%),
-      linear-gradient(90deg, transparent 49%, hsla(180, 100%, 50%, 0.03) 50%, transparent 51%),
-      linear-gradient(0deg, transparent 49%, hsla(275, 74%, 37%, 0.03) 50%, transparent 51%);
-    background-size: 100px 100px, 200px 200px, 300px 300px, 100px 100px, 100px 100px;
-  }
+body { 
+  font-family: 'Inter', sans-serif;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    font-family: 'Exo 2', sans-serif;
-  }
-
-  .placa-mono {
-    font-family: 'Share Tech Mono', monospace !important;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+.card-modern {
+  transition: all 0.3s ease;
+  border: 1px solid hsl(var(--border));
 }
 
+.card-modern:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 10px 30px hsl(var(--primary)/0.1);
+  transform: translateY(-2px);
+}
 
+.shadow-soft {
+  box-shadow: 0 4px 20px hsl(var(--primary)/0.08);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+}
