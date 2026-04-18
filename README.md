@@ -58,10 +58,10 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 **ASCII Backup:**
 ```
 ROLES(id, nombre)
-   ← 1:* USUARIOS(id, email, password, nombre, rol_id)
+   ← 1:* USUARIOS(id, nombre, email, password_hash, rol_id)
 
 TIPOS_VEHICULO(id, nombre)
-   ← 1:* TARIFAS(id, tipo_vehiculo_id, valor_hora)
+   ← 1:* TARIFAS(id, tipo_vehiculo_id, nombre, valor)
 
 TIPOS_VEHICULO
    ← 1:* ESPACIOS(id, codigo, disponible, tipo_vehiculo_id)
@@ -69,21 +69,23 @@ TIPOS_VEHICULO
 ESPACIOS + TIPOS_VEHICULO + USUARIOS
    ← 1:* REGISTROS(
 id,
-        placa,
-        fecha_hora_entrada,
-        fecha_hora_salida,
-        minutos_totales,
-        valor_pagado,
-        estado,
-        usuario_entrada_id,
-        usuario_salida_id,
-        tipo_vehiculo_id,
-        espacio_id
+placa,
+fecha_hora_entrada,
+fecha_hora_salida,
+minutos_totales,
+valor_calculado,
+estado,
+usuario_entrada_id,
+usuario_salida_id,
+tipo_vehiculo_id,
+espacio_id,
+tarifa_id
      )
 
 REGISTROS
-   → 1:* TICKETS(id, registro_id, codigo_unico, fecha_emision)
+   → 1:* TICKETS(id, registro_id, codigo_ticket, fecha_emision)
 ```
+
 
 
 **Fuente:** scripts/supabase-schema.sql ejecutado en Supabase → Export visual.
