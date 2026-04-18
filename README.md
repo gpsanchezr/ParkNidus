@@ -53,7 +53,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
 ## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
-![MER ParkNidus](docs/MER-diagrama.png)
+<img width="1024" height="572" alt="image" src="https://github.com/user-attachments/assets/7e52b66e-cbbe-4e97-8a29-2fb65229fd14" />
+
 
 **ASCII Backup:**
 ```
