@@ -1,3 +1,9 @@
+# ParkNidus 🚗 Cyberpunk Parking System
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue?style=flat&logo=tailwind)](https://tailwindcss.com)
+[![Supabase](https://img.shields.io/badge/Supabase-Postgres-purple?style=flat&logo=supabase)](https://supabase.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://typescriptlang.org)
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=flat&logo=vercel)](https://vercel.com)
 
 **Sistema Web de Control de Parqueadero Neon Pulse**.
 
@@ -47,7 +53,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
 ## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
-https://chatgpt.com/backend-api/estuary/content?id=file_000000009aac71f5b4070d21dbdde663&ts=493477&p=fs&cid=1&sig=670176986141d7246c4f0522e49a19e11eeeeec20b8fb3872ceda2af320c22fd&v=0
+![MER ParkNidus](docs/MER-diagrama.png)
 
 **ASCII Backup:**
 ```
