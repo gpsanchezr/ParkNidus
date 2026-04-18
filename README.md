@@ -1,4 +1,4 @@
-# ParkNidus 🚗 Cyberpunk Parking System
+<img width="2816" height="1536" alt="Gemini_Generated_Image_r3hhmqr3hhmqr3hh" src="https://github.com/user-attachments/assets/d24c5a38-56be-45a6-b315-a3f3e4cdfc3c" /># ParkNidus 🚗 Cyberpunk Parking System
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue?style=flat&logo=tailwind)](https://tailwindcss.com)
 [![Supabase](https://img.shields.io/badge/Supabase-Postgres-purple?style=flat&logo=supabase)](https://supabase.com)
@@ -53,8 +53,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
 ## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
-<img width="1024" height="572" alt="image" src="https://github.com/user-attachments/assets/7e52b66e-cbbe-4e97-8a29-2fb65229fd14" />
-
+https://chatgpt.com/backend-api/estuary/content?id=file_000000009aac71f5b4070d21dbdde663&ts=493477&p=fs&cid=1&sig=670176986141d7246c4f0522e49a19e11eeeeec20b8fb3872ceda2af320c22fd&v=0
 
 **ASCII Backup:**
 ```
