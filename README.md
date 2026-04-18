@@ -1,9 +1,3 @@
-<img width="2816" height="1536" alt="Gemini_Generated_Image_r3hhmqr3hhmqr3hh" src="https://github.com/user-attachments/assets/d24c5a38-56be-45a6-b315-a3f3e4cdfc3c" /># ParkNidus 🚗 Cyberpunk Parking System
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue?style=flat&logo=tailwind)](https://tailwindcss.com)
-[![Supabase](https://img.shields.io/badge/Supabase-Postgres-purple?style=flat&logo=supabase)](https://supabase.com)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://typescriptlang.org)
-[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=flat&logo=vercel)](https://vercel.com)
 
 **Sistema Web de Control de Parqueadero Neon Pulse**.
 
