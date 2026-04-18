@@ -53,14 +53,35 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 | GET | `/api/reports?fechaInicio&fechaFin` | Ingresos Recharts |
 
 ## 🏗️ **Diagrama MER (Modelo Entidad-Relación)**
-![MER ParkNidus](docs/MER-diagrama.png)
+![MER ParkNidus](docs/DIAGRAMA-MER.png)
 
 **ASCII Backup:**
 ```
-ROLES(id,nombre) ←1:* USUARIOS(email,password_hash,rol_id)
-TIPOS_VEHICULO ←* TARIFAS(tipo_cobro,valor)
-ESPACIOS(codigo,disponible) *:* REGISTROS(placa,estado,minutos_totales,valor_calculado)
-REGISTROS →1:* TICKETS(codigo_ticket)
+ROLES(id, nombre)
+   ← 1:* USUARIOS(id, email, password, rol_id)
+
+TIPOS_VEHICULO(id, nombre)
+   ← 1:* TARIFAS(tipo_vehiculo_id, valor_hora)
+
+TIPOS_VEHICULO
+   ← 1:* ESPACIOS(codigo, disponible, tipo_vehiculo_id)
+
+ESPACIOS + TIPOS_VEHICULO + USUARIOS
+   ← 1:* REGISTROS(
+        placa,
+        fecha_hora_entrada,
+        fecha_hora_salida,
+        minutos_totales,
+        valor_pagado,
+        estado,
+        usuario_entrada_id,
+        usuario_salida_id,
+        tipo_vehiculo_id,
+        espacio_id
+     )
+
+REGISTROS
+   → 1:* TICKETS(codigo_unico, fecha_emision)
 ```
 **Fuente:** scripts/supabase-schema.sql ejecutado en Supabase → Export visual.
 
@@ -129,13 +150,15 @@ graph TD
     D --> H[Registrar Entrada]
     H --> I{ Cupos disponibles? }
     I -->|NO| J[ Bloqueo - Sin cupos ]
-    I -->|SI| K[ Asignar espacio<br/>REGISTROS EN_CURSO ]
+    I -->|SI| K[ Asignar espacio
+REGISTROS EN_CURSO ]
     
     D --> L[Registrar Salida]
     L --> M[ Buscar placa EN_CURSO ]
     M --> N[ Calc tiempo/valor ]
     N --> O[ Confirmar cobro ]
-    O --> P[FINALIZADO + Ticket<br/>Liberar espacio ]
+    O --> P[FINALIZADO + Ticket
+Liberar espacio ]
     
     A --> Q[Cerrar Sesión]
     
